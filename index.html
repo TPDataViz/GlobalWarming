@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - Cyber Attack - Datamaps</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+    <div id="container" class="map-container">
+        <div class="map-control--container">
+            <a href="#" data-zoom="reset" title="Zoom all the way out" class="map-control reset-zoom-btn">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+            </a>
+            <a href="#" data-zoom="in" title="Zoom in" class="map-control zoom-in">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+            <a href="#" data-zoom="out" title="Zoom out" class="map-control zoom-out">
+                <i class="fa fa-minus" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="map-visualize--details-container animated fadeInUp">
+            <h3 class="company">
+                Maybank
+            </h3>
+            <h5>Attack (Outbound)</h5>
+        </div>
+    </div>
+    <!----><div class="main-content">
+    <!--<div class="container">
+      <h1>Attack Map</h1>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+      <p>And some other test long and long below</p>
+    </div>
+  </div>  -->
+</div>
+
+    <!-- Add 2 buttons -->
+    <button onclick="update(data1)">2004</button>
+    <button onclick="update(data2)">2005</button>
+    <button onclick="update(data2)">2006</button>
+    <button onclick="update(data2)">2007</button>
+    <button onclick="update(data2)">2008</button>
+    <button onclick="update(data2)">2009</button>
+    <button onclick="update(data2)">2010</button>
+    <button onclick="update(data2)">2011</button>
+    <button onclick="update(data2)">2012</button>
+    <button onclick="update(data2)">2013</button>
+    <button onclick="update(data2)">2014</button>
+    <button onclick="update(data2)">2015</button>
+    <button onclick="update(data2)">2016</button>
+
+
+    <!-- Simple button -->
+    <br><br>
+    <h6> Data source :  </h6>
+    <button onclick="location.href='https://www.movebank.org/cms/webapp?gwt_fragment=page=studies,path=study217784323+individual'" type="button">
+        Animal data</button>
+    <h6> Bibliography :</h6>
+
+    <a class="btn btn-secondary" href="https://codesandbox.io/s/w60wyr9v8?file=/src/index.js">Code we built on our visualization</a>
+
+    <!-- hi res https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.hires.min.js -->
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.0/topojson.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.all.min.js'></script><script  src="./script.js"></script>
+    <!-- Load bootstrap -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+
+</body>
+</html>
