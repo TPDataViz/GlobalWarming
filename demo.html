@@ -1,108 +1,73 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-    <meta charset="UTF-8">
-    <title>Réchauffement climatique</title>
-    <!--D3-->
-    <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
-    <script src="https://unpkg.com/d3-simple-slider"></script>
-    <link rel="stylesheet" type="text/css" href="map.css" />
-    <!---->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js" integrity="sha512-FcXc9c211aHVJEHxoj2fNFeT8+wUESf/4mUDIR7c31ccLF3Y6m+n+Wsoq4dp2sCnEEDVmjhuXX6TfYNJO6AG6A==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
-    <link rel="stylesheet" type="text/css" href="demo.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" integrity="sha512-W9OWS8dgpQBw5Hb+tbMto1BMsHvYOXT/AFBGvASCPUJleaEdpOAN5lzgj9RrTbo3YrlR+m9xdOBccp8F+SFyQg==" crossorigin="anonymous" />
-    <script type="text/javascript">
-        $(document).ready(function() {
+    <head>
+        <meta charset="UTF-8">
+        <title>Réchauffement climatique</title>
+        <!--D3-->
+        <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="https://unpkg.com/d3-simple-slider"></script>
+        <link rel="stylesheet" type="text/css" href="map.css" />
+        <!---->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js" integrity="sha512-FcXc9c211aHVJEHxoj2fNFeT8+wUESf/4mUDIR7c31ccLF3Y6m+n+Wsoq4dp2sCnEEDVmjhuXX6TfYNJO6AG6A==" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
+        <link rel="stylesheet" type="text/css" href="demo.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" integrity="sha512-W9OWS8dgpQBw5Hb+tbMto1BMsHvYOXT/AFBGvASCPUJleaEdpOAN5lzgj9RrTbo3YrlR+m9xdOBccp8F+SFyQg==" crossorigin="anonymous" />
+        <script type="text/javascript">
+            $(document).ready(function() {
 
-            /*
-            * Plugin intialization
-            */
-            $('#pagepiling').pagepiling({
-                menu: '#menu',
-                anchors: ['page1', 'page2', 'page3', 'page4'],
-                sectionsColor: ['#323334', '#323334', '#323334'],
-                navigation: {
-                    'position': 'right',
-                    'tooltips': ['Introduction', 'Températures', 'Migrations']
-                },
-                afterRender: function(){
-                    $('#pp-nav').addClass('custom');
-                },
-                afterLoad: function(anchorLink, index){
-                    if(index>1){
-                        $('#pp-nav').removeClass('custom');
-                    }else{
+                /*
+                * Plugin intialization
+                */
+                $('#pagepiling').pagepiling({
+                    menu: '#menu',
+                    anchors: ['page1', 'page2', 'page3', 'page4'],
+                    sectionsColor: ['#323334', '#323334', '#323334'],
+                    navigation: {
+                        'position': 'right',
+                        'tooltips': ['Introduction', 'Températures', 'Migrations']
+                    },
+                    afterRender: function(){
                         $('#pp-nav').addClass('custom');
+                    },
+                    afterLoad: function(anchorLink, index){
+                        if(index>1){
+                            $('#pp-nav').removeClass('custom');
+                        }else{
+                            $('#pp-nav').addClass('custom');
+                        }
                     }
-                }
+                });
             });
+        </script>
+    </head>
+    <body>
+        <ul id="menu">
+            <li data-menuanchor="page1" class="active"><a href="#page1">Introduction</a></li>
+            <li data-menuanchor="page2"><a href="#page2">Températures</a></li>
+            <li data-menuanchor="page3"><a href="#page3">Tracking animaux</a></li>
+        </ul>
 
 
-            /*
-            * Internal use of the demo website
-            */
-            $('#showExamples').click(function(e){
-                e.stopPropagation();
-                e.preventDefault();
-                $('#examplesList').toggle();
-            });
+        <div id="pagepiling">
+            <div class="section" id="section1">
+                <h1>Visualisation du réchauffement climatique</h1>
+                <p>Impact sur une population d'animaux</p>
+                <h2 id="present">KARDOUS Amina, MARTHE Guillaume, JOMAA Achref, MILIONI Théo</h2>
 
-            $('html').click(function(){
-                $('#examplesList').hide();
-            });
-        });
-    </script>
-</head>
-<body>
-
-
-
-<ul id="menu">
-    <li data-menuanchor="page1" class="active"><a href="#page1">Introduction</a></li>
-    <li data-menuanchor="page2"><a href="#page2">Températures</a></li>
-    <li data-menuanchor="page3"><a href="#page3">Tracking animaux</a></li>
-    <!--<li data-menuanchor="page4"><a href="#page4">Page 4</a></li>-->
-</ul>
-
-
-<div id="pagepiling">
-    <div class="section" id="section1">
-        <!--<div id="container" class="svg-container"></div>-->
-        <!--&lt;!&ndash;<div id="chart"></div>&ndash;&gt;-->
-        <!--<script  src="./scriptTemp.js"></script>-->
-        <h1>Visualisation du réchauffement climatique</h1>
-        <p>Impact sur une population d'animaux</p>
-        <h2 id="present">KARDOUS Amina, MARTHE Guillaume, JOMAA Achref, MILIONI Théo</h2>
-        <!--<div id="download"><a href="https://github.com/alvarotrigo/pagePiling.js/archive/master.zip">Download</a></div><br />-->
-
-    </div>
-    <div class="section" id="section2">
-        <div id="container" class="svg-container"></div>
-        <script  src="./scriptTemp.js"></script>
-    </div>
-    <div class="section" id="section3">
-        <div class="intro">
-            <h1>Map</h1>
-            <p>Tracking animaux</p>
-            <div id="colors2"></div>
-            <div id="colors3"></div>
+            </div>
+            <div class="section" id="section2">
+                <div id="container" class="svg-container"></div>
+            </div>
+            <div class="section" id="section3">
+                <div class="intro">
+                    <h1>Map</h1>
+                    <p>Tracking animaux</p>
+                    <div id="colors2"></div>
+                    <div id="colors3"></div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!--<div class="section" id="section4">-->
-        <!--<div id="exampleList">-->
-            <!--<ul>-->
-                <!--<li>Un</li>-->
-                <!--<li>Deux-->
-                    <!--<ul>-->
-                        <!--<li>Deux un quart</li>-->
-                        <!--<li>Deux et demi</li>-->
-                    <!--</ul>-->
-                <!--</li>-->
-                <!--<li>Trois</li>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
-</div>
+        <script  src="./scriptTemp.js"></script>
+    </body>
 </html>

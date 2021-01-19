@@ -8,8 +8,6 @@ var svg = d3
     .select("div#container")
     .append("svg")
     .attr("id","test")
-    //.attr("width",w)
-    //.attr("height",h)
     .attr("preserveAspectRatio", "xMinYMin meet")
     .style("background-color", "#323334")
     .attr("viewBox", "0 0 " + w + " " + h)
@@ -37,7 +35,7 @@ Promise.all([worldmapCSV, winterTempCSV,summerTempCSV]).then(function (values) {
         .append("path")
         .attr("class", "continent")
         .attr("id", d => d.properties.name)
-.attr("d", path);
+        .attr("d", path);
 
     var title = svg.append("g");
     title.append("rect")
@@ -81,13 +79,10 @@ Promise.all([worldmapCSV, winterTempCSV,summerTempCSV]).then(function (values) {
     var slider = addSlider(parseInt(d3.min(summerTemp, d => d.Year)),parseInt(d3.max(summerTemp, d => d.Year)));
     addChart(year);
     colorMap(year,summerTemp);
-
 });
 
 function colorMap(year, temps) {
     temps.filter(temp => temp.Year == year).forEach(function (e, i) {
-        // addColor(e.Country, e.Year , summer.quantile(+e.Temperature));
-        //if (e.Year == "2015") {
         var country = e.Country;
         var countryPath = d3.select("#" + country);
         var tooltip = d3.select("#tooltip");
@@ -115,7 +110,6 @@ function colorMap(year, temps) {
                 var mouse = d3.pointer(event);
                 tooltip.attr("transform", "translate(" + mouse[0] + "," + (mouse[1] - 75) + ")");
             });
-        // }
     });
 }
 function addLegend(min, max,colors) {
@@ -145,7 +139,6 @@ function addLegend(min, max,colors) {
     legendAxis = legend.append("g")
         .attr("class", "axis")
         .call(d3.axisLeft(legendScale));
-
     return legend;
 }
 
@@ -220,19 +213,14 @@ function addSlider(min,max) {
                 .size(400)()
         )
         .on('onchange', val => {
-        colorMap(val.getFullYear(), summerTemp);
-    addChart(val.getFullYear());
-    d3.select('#h2').text(val.getFullYear());
-});
+            colorMap(val.getFullYear(), summerTemp);
+            addChart(val.getFullYear());
+            d3.select('#h2').text(val.getFullYear());
+        });
 
     var gTime = svg.append('g')
-    //.attr('width', 50)
-    //.attr('height', 100)
         .attr('transform', 'translate(790,420)');
-
-
     gTime.call(sliderTime);
-
     d3.select('p#value-time').text(d3.timeFormat('%Y')(sliderTime.value()));
 }
 
