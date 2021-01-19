@@ -1,7 +1,6 @@
 const w = 1550,
     h = 790,
     legendCellSize = 22;
-var winter = {colors : ['#d4eac7', '#c6e3b5', '#b7dda2', '#a9d68f', '#9bcf7d', '#8cc86a', '#7ec157', '#77be4e', '#70ba45', '#65a83e', '#599537', '#4e8230', '#437029', '#385d22', '#2d4a1c', '#223815'] },
     summer = {colors : ['#ffc2a3','#ffad85','#ff9966', '#fc9161', '#fa8a5c', '#f78257', '#f57a52', '#f2734c', '#f06b47', '#ed6342', '#eb5c3d', '#e85438', '#e64c33', '#e3452e', '#e03d29', '#de3624', '#db2e1f', '#d61f14','#d2140d','#cc0000']};
 var year = 1904;
 var svg = d3
@@ -21,13 +20,11 @@ var path = d3.geoPath().projection(projection);
 
 // load data
 var worldmapCSV = d3.json("world-countries-no-antartica.json");
-var winterTempCSV = d3.csv("winterTemp.csv");
 var summerTempCSV = d3.csv("summerTemp.csv");
 var summerTemp;
 
-Promise.all([worldmapCSV, winterTempCSV,summerTempCSV]).then(function (values) {
-    var winterTemp = values[1];
-    summerTemp = values[2];
+Promise.all([worldmapCSV,summerTempCSV]).then(function (values) {
+    summerTemp = values[1];
     svg
         .selectAll("path")
         .data(values[0].features)
@@ -65,10 +62,6 @@ Promise.all([worldmapCSV, winterTempCSV,summerTempCSV]).then(function (values) {
         .style("fill","#323334")
         .attr("width",820)
         .attr("height",360);
-
-    winter.min = d3.min(winterTemp, d => d.Statistics.includes('Feb') ? +d.Temperature : NaN);
-    winter.max = d3.max(winterTemp, d =>  d.Statistics.includes('Feb') ? +d.Temperature : NaN);
-    winter.quantile = d3.scaleQuantile().domain([winter.min, winter.max]).range(winter.colors);
 
     summer.min = d3.min(summerTemp, d => d.Statistics.includes('Aug') ? +d.Temperature : NaN);
     summer.max = d3.max(summerTemp, d =>  d.Statistics.includes('Aug') ? +d.Temperature : NaN);
