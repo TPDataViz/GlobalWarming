@@ -40,7 +40,7 @@ Promise.all([worldmapCSV,summerTempCSV]).then(function (values) {
         .attr("width",w)
         .attr("height",60);
     title.append("text")
-        .attr("x", (w / 2))
+        .attr("x", (w / 2)+15)
         .attr("y", 45)
         .attr("text-anchor", "middle")
         .style("fill", "#FFA57D")
@@ -243,9 +243,24 @@ function addChart(maxDate) {
             .attr("class", "axis")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x));
+        chart.append("text")
+            .attr("transform",
+                "translate(360,400)")
+            .style("text-anchor", "middle")
+            .style("fill", "#FFA57D")
+            .text("Date");
+
         chart.append("g")
             .attr("class", "axis")
             .call(d3.axisLeft(y));
+        chart.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left)
+            .attr("x",0 - (height / 2)-40)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .style("fill", "#FFA57D")
+            .text("Température");
 
         // Add the line
         data2 = [{x:1902,y:18.6},{x:2016,y:19.8}]
