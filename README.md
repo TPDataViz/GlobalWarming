@@ -10,6 +10,7 @@ global warming and hence temperature variation on the animals and their migratio
 
 
 
-This was all built using html css and D3. 
+This was all built using HTML CSS and D3.js. 
 ## Réchauffement climatique & Migration des animaux
+![Map](Screenshot.png)
 [Lien de notre page web de présentation](https://tpdataviz.github.io/GlobalWarming/)  
